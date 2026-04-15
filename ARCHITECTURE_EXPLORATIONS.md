@@ -119,3 +119,13 @@ To move from ideas to implementation, this repository now includes baseline expa
 - `scripts/eval_scenarios.py` and `eval/scenarios/*.json` for measurable scenario scoring.
 - `.github/workflows/foundation-checks.yml` to automatically validate scenario data and workflow syntax.
 - `.github/ISSUE_TEMPLATE/expansion-opportunity.yml` to standardize future proposal quality.
+
+## Utility-System Modeling Upgrade
+
+To align with large-scale architecture growth, scenario nodes now explicitly declare underground-utility equivalents:
+
+- `utility_systems` represent shared infrastructure (identity, event transport, config/secrets, telemetry, governance).
+- each component now includes `utility_dependencies` and `service_criticality`.
+- the evaluator now calculates `utility_fragility`, `utility_resilience`, `utility_capacity_headroom`, and `utility_observability`.
+
+This ensures small component-level improvements are evaluated against platform-level infrastructure reality.

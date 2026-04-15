@@ -23,6 +23,15 @@ body:
       required: true
 
   - type: textarea
+    id: utility_infrastructure
+    attributes:
+      label: Utility Infrastructure Impact
+      description: Which shared utility systems does this change depend on or modify?
+      placeholder: identity/auth, eventing, telemetry, config/secrets, governance, etc.
+    validations:
+      required: true
+
+  - type: textarea
     id: architecture
     attributes:
       label: Architectural Impact
@@ -36,6 +45,6 @@ body:
     attributes:
       label: Success Metrics
       description: How will we know this addition worked?
-      placeholder: Add measurable acceptance criteria.
+      placeholder: Add measurable acceptance criteria and target score movement.
     validations:
       required: true

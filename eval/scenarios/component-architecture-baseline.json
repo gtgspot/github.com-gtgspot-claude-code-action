@@ -1,6 +1,31 @@
 {
   "scenario": "component-architecture-baseline",
-  "description": "Baseline estimate for a modular expansion of workflow automation and supporting tooling.",
+  "description": "Baseline estimate for a modular expansion with explicit utility-style infrastructure dependencies.",
+  "analogy": {
+    "house": "feature module",
+    "suburb": "product domain",
+    "city": "organization-wide platform"
+  },
+  "utility_systems": [
+    {
+      "name": "identity-and-access",
+      "resilience": 0.79,
+      "capacity_headroom": 0.66,
+      "observability": 0.74
+    },
+    {
+      "name": "event-transport",
+      "resilience": 0.73,
+      "capacity_headroom": 0.62,
+      "observability": 0.70
+    },
+    {
+      "name": "config-and-secrets",
+      "resilience": 0.86,
+      "capacity_headroom": 0.80,
+      "observability": 0.78
+    }
+  ],
   "components": [
     {
       "name": "workflow-orchestrator",
@@ -8,7 +33,9 @@
       "scalability": 0.68,
       "performance_risk": 0.30,
       "technical_debt_risk": 0.34,
-      "paradigm_tension": 0.18
+      "paradigm_tension": 0.18,
+      "service_criticality": 0.64,
+      "utility_dependencies": ["identity-and-access", "event-transport", "config-and-secrets"]
     },
     {
       "name": "scenario-evaluator",
@@ -16,7 +43,9 @@
       "scalability": 0.77,
       "performance_risk": 0.21,
       "technical_debt_risk": 0.22,
-      "paradigm_tension": 0.12
+      "paradigm_tension": 0.12,
+      "service_criticality": 0.49,
+      "utility_dependencies": ["config-and-secrets", "event-transport"]
     },
     {
       "name": "proposal-intake-template",
@@ -24,7 +53,9 @@
       "scalability": 0.80,
       "performance_risk": 0.10,
       "technical_debt_risk": 0.14,
-      "paradigm_tension": 0.08
+      "paradigm_tension": 0.08,
+      "service_criticality": 0.31,
+      "utility_dependencies": ["identity-and-access"]
     }
   ]
 }

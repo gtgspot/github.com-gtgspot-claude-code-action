@@ -1,28 +1,43 @@
 # Claude Code Action Playground
 
-This repository is a lightweight foundation for experimenting with **AI-assisted repository automation** and **architecture-aware expansion planning**.
+This repository provides a practical foundation for experimenting with **AI-assisted automation** and **architecture-aware expansion planning**.
 
-## What exists now
+## Infrastructure-first expansion model
 
-- A comment-driven Claude Code workflow (`@claude`) with manual dispatch support.
-- Security and reliability guardrails (permissions, concurrency, timeout).
-- A starter architecture exploration document.
+To match a city-scale analogy (room → house → suburb → city), each software component node is now modeled with explicit dependency on shared utility infrastructure.
 
-## New foundation for expansion opportunities
+- **Room**: feature-level component
+- **House**: bounded context (application area)
+- **Suburb**: domain/platform slice
+- **City**: organizational architecture
+- **Underground utilities**: identity, event transport, config/secrets, telemetry, governance
 
-This repository now includes:
+This lets us measure not only component quality but also hidden infrastructure fragility that can destabilize larger systems.
 
-1. **Component model primer** (`docs/component_model.md`) for a pedagogical architecture framework.
-2. **Scenario-based evaluation harness** (`eval/scenarios/*.json` + `scripts/eval_scenarios.py`) to score maintainability/scalability/sustainability assumptions.
-3. **Continuous checks workflow** (`.github/workflows/foundation-checks.yml`) to validate scenario files and workflow syntax.
-4. **Issue template** (`.github/ISSUE_TEMPLATE/expansion-opportunity.yml`) to standardize future proposals.
+## What this repository now includes
+
+1. **Pedagogical architecture guide** in `docs/component_model.md`.
+2. **Scenario evaluator** in `scripts/eval_scenarios.py` with utility-network aware scoring.
+3. **Scenario datasets** in `eval/scenarios/*.json` (baseline + city-scale).
+4. **CI checks** in `.github/workflows/foundation-checks.yml` for scenario validation and actionlint.
+5. **Expansion issue template** in `.github/ISSUE_TEMPLATE/expansion-opportunity.yml`.
 
 ## Quick start
 
-Run the scenario evaluator locally:
+Run the baseline scenario:
 
 ```bash
 python3 scripts/eval_scenarios.py eval/scenarios/component-architecture-baseline.json
 ```
 
-This prints derived metrics such as maintainability pressure, paradigm tension, and a baseline sustainability score.
+Run the city-scale scenario:
+
+```bash
+python3 scripts/eval_scenarios.py eval/scenarios/city-scale-utility-network.json
+```
+
+Output includes:
+- component pressures (maintainability/scalability),
+- risk signals (performance/debt/paradigm tension),
+- infrastructure signals (utility fragility/resilience/observability),
+- an aggregate `sustainability_score`.

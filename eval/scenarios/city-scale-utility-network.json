@@ -1,0 +1,94 @@
+{
+  "scenario": "city-scale-utility-network",
+  "description": "A larger multi-domain architecture where each component node declares dependency on shared utility infrastructure.",
+  "analogy": {
+    "bedroom": "single feature component",
+    "house": "application bounded context",
+    "suburb": "business domain",
+    "city": "enterprise platform"
+  },
+  "utility_systems": [
+    {
+      "name": "identity-and-access",
+      "resilience": 0.84,
+      "capacity_headroom": 0.76,
+      "observability": 0.79
+    },
+    {
+      "name": "event-transport",
+      "resilience": 0.77,
+      "capacity_headroom": 0.69,
+      "observability": 0.75
+    },
+    {
+      "name": "config-and-secrets",
+      "resilience": 0.89,
+      "capacity_headroom": 0.83,
+      "observability": 0.82
+    },
+    {
+      "name": "telemetry-and-alerting",
+      "resilience": 0.82,
+      "capacity_headroom": 0.71,
+      "observability": 0.91
+    },
+    {
+      "name": "data-governance",
+      "resilience": 0.74,
+      "capacity_headroom": 0.65,
+      "observability": 0.70
+    }
+  ],
+  "components": [
+    {
+      "name": "workflow-orchestrator",
+      "maintainability": 0.70,
+      "scalability": 0.72,
+      "performance_risk": 0.27,
+      "technical_debt_risk": 0.30,
+      "paradigm_tension": 0.19,
+      "service_criticality": 0.68,
+      "utility_dependencies": ["identity-and-access", "event-transport", "config-and-secrets", "telemetry-and-alerting"]
+    },
+    {
+      "name": "expansion-graph-registry",
+      "maintainability": 0.76,
+      "scalability": 0.79,
+      "performance_risk": 0.24,
+      "technical_debt_risk": 0.21,
+      "paradigm_tension": 0.17,
+      "service_criticality": 0.61,
+      "utility_dependencies": ["config-and-secrets", "data-governance", "telemetry-and-alerting"]
+    },
+    {
+      "name": "proposal-intake-template",
+      "maintainability": 0.89,
+      "scalability": 0.83,
+      "performance_risk": 0.09,
+      "technical_debt_risk": 0.12,
+      "paradigm_tension": 0.07,
+      "service_criticality": 0.34,
+      "utility_dependencies": ["identity-and-access"]
+    },
+    {
+      "name": "scenario-evaluator",
+      "maintainability": 0.82,
+      "scalability": 0.80,
+      "performance_risk": 0.18,
+      "technical_debt_risk": 0.20,
+      "paradigm_tension": 0.11,
+      "service_criticality": 0.57,
+      "utility_dependencies": ["config-and-secrets", "event-transport", "telemetry-and-alerting"]
+    },
+    {
+      "name": "automation-policy-engine",
+      "maintainability": 0.67,
+      "scalability": 0.74,
+      "performance_risk": 0.32,
+      "technical_debt_risk": 0.36,
+      "paradigm_tension": 0.24,
+      "service_criticality": 0.73,
+      "utility_dependencies": ["identity-and-access", "data-governance", "telemetry-and-alerting", "event-transport"]
+    }
+  ]
+}

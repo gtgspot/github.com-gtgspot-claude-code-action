@@ -1,63 +1,71 @@
-# Component-Driven Architecture Model (Pedagogical Primer)
+# Component-Driven Architecture Model (with Utility Infrastructure)
 
-This primer introduces a practical way to reason about expansion opportunities in codebases using a component model.
+This primer introduces a pedagogical model for planning expansion opportunities in a way that scales from small features to organization-wide platforms.
 
-## 1) Components as modular entities
+## 1) Core analogy
 
-A **component** is a bounded unit with:
-- a clear purpose,
-- explicit inputs/outputs,
+Use this mapping to reason consistently about architecture:
+
+- **Bedroom** → single feature component
+- **House** → bounded context containing multiple components
+- **Suburb** → product/domain grouping of bounded contexts
+- **City** → full organization architecture
+- **Underground utility systems** → shared cross-cutting platform services
+
+In software, utility systems include identity, event transport, configuration/secrets, telemetry, and governance.
+
+## 2) Components as deterministic modules
+
+Each component is modeled as a bounded entity with:
+- purpose,
+- inputs/outputs,
 - state boundaries,
-- and known dependencies.
+- utility dependencies,
+- and service criticality.
 
-This gives us a deterministic language for describing architecture decisions.
+This turns “hidden assumptions” into explicit architecture data.
 
-## 2) Deterministic composition of UI patterns
+## 3) Why utility systems matter
 
-When components are composed with explicit interfaces (props/events/services), we can model behavior more predictably:
-- fewer hidden side effects,
-- easier testing,
-- lower integration risk.
+A small room can look excellent while the house still fails if plumbing or electricity is fragile.
 
-## 3) Quantifying architecture properties
+Likewise, a high-quality component can still underperform when its underlying platform dependencies are unreliable or under-provisioned. The model therefore tracks utility health separately from component metrics.
 
-For each component, estimate:
-- **maintainability** (change surface + coupling pressure),
-- **scalability** (throughput sensitivity + shared bottlenecks),
-- **performance implications** (state lifecycle and render/update frequency).
+## 4) Metrics captured in this repository
 
-These can be represented numerically (for example on a 0–1 scale) to compare alternatives.
+### Component metrics
+- maintainability
+- scalability
+- performance risk
+- technical debt risk
+- paradigm tension
+- service criticality
 
-## 4) Secondary characteristics via component state
+### Utility metrics
+- resilience
+- capacity headroom
+- observability
 
-State design affects architecture quality:
-- localized state improves isolation,
-- duplicated state can increase defect probability,
-- global mutable state may create hidden coupling.
+From these we derive:
+- maintainability/scalability pressure,
+- utility fragility,
+- sustainability score.
 
-By treating state as a first-class architectural feature, we can approximate future operational cost.
+## 5) Sustainability framing
 
-## 5) Sustainability and technical debt
+Sustainability improves when:
+- pressure is low,
+- utility fragility is low,
+- and critical services are not over-dependent on weak infrastructure.
 
-A rough sustainability estimate can combine:
-- maintainability pressure,
-- paradigm tension (mixing competing architectural styles),
-- accumulated technical debt pressure.
-
-This repo's evaluation harness demonstrates a simplified scoring model to make these trade-offs explicit.
+This framework is intentionally simple so teams can start measuring and refine weights over time.
 
 ## 6) Practical limitations
 
-These measurements are estimates, not proofs:
-- scoring quality depends on input quality,
-- teams may rate components inconsistently,
-- complex systems can hide nonlinear interactions.
+- Scores are estimate-driven and depend on input quality.
+- Teams may rate similar components differently.
+- Interactions can be nonlinear in real production systems.
 
-## 7) Why automated code generation helps
+## 7) Role of automation
 
-Automation can reduce repetitive implementation effort and enforce templates, but should be paired with:
-- review checklists,
-- metric guardrails,
-- and scenario-based evaluation.
-
-That combination helps teams scale safely while preserving architectural intent.
+Automated generation and validation (templates + evaluators + CI checks) help standardize quality, reduce subjective drift, and keep architectural reasoning repeatable as the system scales from room-level features to city-level platforms.
