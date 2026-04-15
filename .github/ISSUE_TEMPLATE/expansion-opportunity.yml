@@ -1,0 +1,41 @@
+name: Expansion Opportunity
+description: Propose an architectural or automation expansion for this repository.
+title: "[Expansion] "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: What problem or opportunity are you addressing?
+      placeholder: Describe the current limitation and why it matters.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Addition
+      description: What new capability should be added?
+      placeholder: Describe the modification and expected behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: architecture
+    attributes:
+      label: Architectural Impact
+      description: Explain maintainability, scalability, and technical debt implications.
+      placeholder: Include component boundaries, coupling changes, and risk notes.
+    validations:
+      required: true
+
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Success Metrics
+      description: How will we know this addition worked?
+      placeholder: Add measurable acceptance criteria.
+    validations:
+      required: true

@@ -1,0 +1,30 @@
+{
+  "scenario": "component-architecture-baseline",
+  "description": "Baseline estimate for a modular expansion of workflow automation and supporting tooling.",
+  "components": [
+    {
+      "name": "workflow-orchestrator",
+      "maintainability": 0.72,
+      "scalability": 0.68,
+      "performance_risk": 0.30,
+      "technical_debt_risk": 0.34,
+      "paradigm_tension": 0.18
+    },
+    {
+      "name": "scenario-evaluator",
+      "maintainability": 0.81,
+      "scalability": 0.77,
+      "performance_risk": 0.21,
+      "technical_debt_risk": 0.22,
+      "paradigm_tension": 0.12
+    },
+    {
+      "name": "proposal-intake-template",
+      "maintainability": 0.88,
+      "scalability": 0.80,
+      "performance_risk": 0.10,
+      "technical_debt_risk": 0.14,
+      "paradigm_tension": 0.08
+    }
+  ]
+}

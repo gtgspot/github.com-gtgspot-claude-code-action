@@ -110,3 +110,12 @@ The `main.yml` workflow in this branch now includes:
 5. A `timeout-minutes` cap
 
 This gives a more deterministic, secure baseline while preserving the original repository goal.
+
+## Foundations Added After Review
+
+To move from ideas to implementation, this repository now includes baseline expansion infrastructure:
+
+- `docs/component_model.md` for a pedagogical component-driven architecture framework.
+- `scripts/eval_scenarios.py` and `eval/scenarios/*.json` for measurable scenario scoring.
+- `.github/workflows/foundation-checks.yml` to automatically validate scenario data and workflow syntax.
+- `.github/ISSUE_TEMPLATE/expansion-opportunity.yml` to standardize future proposal quality.
